@@ -8,7 +8,7 @@ const registerUser = async (req, res) => {
         //1. validate input
         if (!fullName || !email || !password) {
             return res.status(400).json({ 
-                message: "Please provide all required fields." 
+                message:  "Full name, email and password are required"
             });
         }
 
@@ -26,7 +26,7 @@ const registerUser = async (req, res) => {
         );
 
         if (existingUser.rows.length > 0) {
-            return res.status(400).json({ 
+            return res.status(409).json({ 
                 message: "Email already exists." 
             });
         }
